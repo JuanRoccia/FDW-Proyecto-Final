@@ -1,0 +1,30 @@
+/* Contenedor principal */
+@media (min-width: 1440px){
+    .main-container, .filter-menu {
+        max-width: 1380px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* Descripción entre titulo y boton */
+@media (min-width: 1024px) {
+    .product-description p {
+        margin-top: 2vh;
+    }
+}
+@media screen and (max-width: 768px) {
+    .product-description p {
+        margin-top: 1.5vh;
+    }
+}
+
+/* Filter Menu */
+/* En pantallas de 768px o menos, ocultar el menú normal y mostrar el select */
+@media (max-width: 768px) {
+    .menu-group {
+        display: none;
+    }
+    .filter-select {
+        display: block;
+    }
+}

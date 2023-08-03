@@ -1,0 +1,448 @@
+/***********************************************
+
+     Autor: Juan Manuel Roccia
+
+***********************************************/
+
+/* VARIABLES GENERALES*/
+:root {
+    --bg-black: #000000;
+    --bg-white: #ffffff;
+    --bg-red: #ff3f3a;
+    --details-color: #00fff0;
+    --text-on-white: #00b1a9;
+    --shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ESTILOS DE CABECERA PRINCIPAL*/
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    padding-left: 0;
+    box-shadow: var(--shadow);
+}
+.header-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+    height: 100%;
+}
+.header-group .logo {
+    margin: 0 20px;
+}
+.header-group nav ul {
+    display: flex;
+    gap: 20px;
+}
+.header-icons {
+    display: flex;
+    gap: 20px;
+}
+/* LOGO */
+.rectangle {
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-black);
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+.logo-container {
+    border-left: 10px solid var(--bg-black);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--details-color);
+    position: relative;
+    overflow: hidden;
+}
+.logo {
+    transition: opacity 0.5s ease;
+    position: relative;
+    z-index: 2;
+}
+.logo-inverted {
+    display: none;
+}
+.logo-container:hover .rectangle {
+    transform: scaleX(1);
+}
+.logo-container:hover .logo-original {
+    display: none;
+}
+.logo-container:hover .logo-inverted {
+    display: flex;
+}
+/* NAV */
+.nav-link.active {
+    color: var(--text-on-white);
+}
+
+/* ESTILOS DEL MENU FILTRO */
+.filter-menu {
+    border-left: 10px solid var(--details-color);
+    padding-left: 10px;
+    box-shadow: var(--shadow);
+}
+.menu-group ul {
+    padding: 0;
+}
+.filter-menu {
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+}
+
+/* ESTLOS DEL CONTENEDOR CENTRAL MAIN */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f6f6;
+    padding: 0;
+}
+.main-product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1500px;
+    padding: 50px;
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow);
+}
+/* TEXTO */
+.product-description {
+    max-width: 50%;
+    margin: 0 auto;
+}
+.product-description h1 span {
+    line-height: 1.6;
+    font-size: 1.8em;
+    display: block;
+}
+.product-description h1 small {
+    font-size: 1.5em;
+    font-family: 'IBMPlexMono';
+    font-weight: 100;
+    display: block;
+    transform: scaley(1.2);
+}
+.product-description p {
+    margin: 1vw auto;
+    margin-bottom: 1vw;
+    font-size: 1.3em;
+    font-family: 'IBMPlexMono';
+    font-weight: 300;
+    transform: scaley(1.2);
+}
+/* BOTON */
+.button-container {
+    position: relative;
+    display: inline-block;
+    border-left: 10px solid var(--bg-black);
+}
+.custom-button {
+    display: inline-block;
+    padding: 15px;
+    color: var(--bg-white);
+    font-size: 1.1em;
+    position: relative;
+    z-index: 2;
+}
+.button-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-red);
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+.button-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 99%;
+    background-color: var(--bg-black);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+.button-container:hover .button-slide {
+    transform: scaleX(1);
+}
+.button-container:hover .custom-button {
+    color: var(--bg-white);
+}
+/* IMAGEN */
+.main-image-container {
+    width: 45%;
+    width: 40%;
+    margin: 0 auto;
+}
+.product-image {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.product-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.product-image img.hover:first-child {
+    transform: translateX(-25%);
+}
+/* .product-image img.hover:last-child {
+    transform: translateX(25%);
+} */
+.wrap-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin: 20px;
+}
+.wrap-image::before,
+.wrap-image::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 2px solid var(--bg-red);
+    transition: all .25s ease-out;
+}
+.wrap-image::before {
+    background-color: var(--bg-red);
+    top: -15px;
+    left: -15px;
+}
+.wrap-image::after {
+    bottom: -15px;
+    right: -15px;
+}
+.wrap-image.hover::before {
+    top: 15px;
+    left: 15px;
+}
+.wrap-image.hover::after {
+    bottom: 15px;
+    right: 15px;
+}
+.wrap-image img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* ESTILOS DE LAS OFERTAS EXCLUSIVAS */
+.exclusive-offers {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow);
+    justify-content: space-between;
+    padding: 15px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 1500px;
+}
+.exclusive-offers > div {
+    flex: 1 0 calc(50% - 20px); 
+    margin: 10px;
+}
+.exclusive-offers-fx {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow);
+    justify-content: space-between;
+    padding: 15px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 1500px;
+}
+.exclusive-offers-fx > div {
+    flex: 1 0 calc(33.3333% - 20px);
+    margin: 10px;
+}
+.offers-description {
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 3vw;
+}
+.offers-image {
+    position: relative;
+    max-width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+}
+.offers-image #img1, #img2, #img3, #img4, #img5, #img6, #img7, #img8, #img9, #img10, #img11, #img12 {
+    transition: transform 0.3s ease;
+}
+.offers-image #img1.hover:first-child, #img2.hover:first-child, #img3.hover:first-child, #img4.hover:first-child, #img5.hover:first-child, #img6.hover:first-child, #img7.hover:first-child, #img8.hover:first-child, #img9.hover:first-child, #img10.hover:first-child, #img11.hover:first-child, #img12.hover:first-child {
+    transform: translateX(-25%);
+}
+.offers-image #img2.hover:first-child {
+    transform: translateX(-25%);
+}
+/* .offers-image #img2.hover:first-child {
+    transform: translateX(25%);
+} */
+.offers-description h2 {
+    line-height: 1.6;
+    font-size: 1.8em;
+    font-weight: 400;
+    display: block;
+}
+.offers-description p {
+    margin: 0.5vw auto;
+    margin-bottom: 1vw;
+    font-size: 1.4em;
+    text-transform: capitalize;
+    font-weight: 100;
+    transform: scaley(1.2);
+}
+
+/* ESTILOS DEL PRE-FOOTER */
+.main-pre-footer {
+    margin-top: 3vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.container-pre-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.pre-footer {
+    display: flex;
+    background-color: var(--bg-white);
+    width: 100%;
+    max-width: 1500px;
+    padding: 50px;
+}
+/* TEXTO */
+.pre-footer-description {
+    max-width: 45%;
+}
+.pre-footer-description h3 span {
+    line-height: 1.6;
+    font-size: 2.2em;
+    display: block;
+}
+.pre-footer-description h3 small {
+    line-height: 2;
+    font-size: 2em;
+    font-family: 'IBMPlexMono';
+    font-weight: 100;
+    display: block;
+    transform: scaley(1.1);
+}
+.pre-footer-description p.smaller {
+    font-size: 1.9em;
+    font-family: 'IBMPlexMono';
+    font-weight: 100;
+    display: block;
+    transform: scaley(1.1);
+}
+.pre-footer-description p.desc {
+    font-size: 1.2em;
+    font-weight: 200;
+    display: block;
+    margin: 20px 0;
+}
+/* IMAGEN */
+.pre-footer-image-container {
+    width: 50%;
+    margin: 0 auto;
+}
+.pre-footer-image {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.image-height {
+    height: 450px;
+}
+
+/* ESTILOS PARA EL FOOTER */
+.main-footer {
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IBMPlexMono';
+    font-weight: 100;
+}
+hr {
+    border: 0;
+    border-top: 2px solid rgba(0,0,0,.1);
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    padding: 10px;
+    width: 90%;
+}
+.footer-col p, small {
+    line-height: 2;
+}
+.main-footer h4 {
+    text-transform: uppercase;
+}
+/* FORM */
+.form-group {
+    margin: 2rem 0;
+}
+.input-group {
+    position: relative;
+}
+.input-group-append {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+}
+.input-group-append button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}
+.form-control {
+    padding-right: 40px;
+}
+/* NETWORK */
+.footer-col-social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer-col-social ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.footer-col-social li {
+    margin-right: 20px;
+}
+.footer-col-social li:last-child {
+    margin-right: 0;
+}
